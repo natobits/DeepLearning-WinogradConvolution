@@ -4,4 +4,5 @@
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
-    </Pr
+    </ProjectConfiguration>
+    <ProjectConf
