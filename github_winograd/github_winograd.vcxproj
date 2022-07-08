@@ -5,4 +5,5 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConf
+    <ProjectConfiguration Include="Release|Win32">
+   
