@@ -6,4 +6,5 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
-   
+      <Configuration>Release</Configuration>
+    
