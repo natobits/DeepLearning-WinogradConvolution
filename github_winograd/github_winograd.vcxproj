@@ -9,4 +9,5 @@
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfi
+    <ProjectConfiguration Include="Debug|x64">
+     
