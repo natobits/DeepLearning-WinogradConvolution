@@ -12,4 +12,5 @@
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
-    </Projec
+    </ProjectConfiguration>
+    <ProjectConfiguration Inclu
