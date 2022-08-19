@@ -13,4 +13,5 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Inclu
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Con
