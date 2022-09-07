@@ -22,4 +22,5 @@
     <ClCompile Include="src\winograd_test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Cl
+    <ClInclude Include="include\mathlib.h" />
+    <ClIn
