@@ -23,4 +23,5 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\mathlib.h" />
-    <ClIn
+    <ClInclude Include="include\tool.h" />
+    <ClI
