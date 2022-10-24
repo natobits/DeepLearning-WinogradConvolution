@@ -24,4 +24,4 @@
   <ItemGroup>
     <ClInclude Include="include\mathlib.h" />
     <ClInclude Include="include\tool.h" />
-    <ClI
+    <ClInclude Include="include\winograd_kernel
