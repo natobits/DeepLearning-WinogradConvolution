@@ -27,4 +27,5 @@
     <ClInclude Include="include\winograd_kernel.h" />
     <ClInclude Include="include\winograd_layer.h" />
   </ItemGroup>
-  <PropertyGro
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{91EDB49D-AA
