@@ -25,4 +25,6 @@
     <ClInclude Include="include\mathlib.h" />
     <ClInclude Include="include\tool.h" />
     <ClInclude Include="include\winograd_kernel.h" />
-    <ClInclude Include="include\winog
+    <ClInclude Include="include\winograd_layer.h" />
+  </ItemGroup>
+  <PropertyGro
