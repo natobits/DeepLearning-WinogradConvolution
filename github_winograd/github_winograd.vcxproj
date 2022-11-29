@@ -28,4 +28,4 @@
     <ClInclude Include="include\winograd_layer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{91EDB49D-AA
+    <ProjectGuid>{91EDB49D-AAD0-47A7-A8C3-A87BBDF7099C}</Project
