@@ -31,4 +31,5 @@
     <ProjectGuid>{91EDB49D-AAD0-47A7-A8C3-A87BBDF7099C}</ProjectGuid>
     <RootNamespace>github_winograd</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>Winograd_Con
+    <ProjectName>Winograd_Convolution</ProjectName>
+  </PropertyGroup>
