@@ -33,4 +33,5 @@
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>Winograd_Convolution</ProjectName>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microso
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup C
