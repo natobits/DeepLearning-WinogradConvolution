@@ -40,4 +40,4 @@
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condi
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release
