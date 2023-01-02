@@ -47,4 +47,4 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Cond
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='D
