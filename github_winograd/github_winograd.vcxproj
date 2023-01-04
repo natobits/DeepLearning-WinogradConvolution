@@ -49,4 +49,5 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>tru
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</P
