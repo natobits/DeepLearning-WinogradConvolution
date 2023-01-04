@@ -48,4 +48,5 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</Configurati
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>tru
