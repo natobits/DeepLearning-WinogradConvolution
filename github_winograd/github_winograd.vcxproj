@@ -53,4 +53,4 @@
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup 
+  <PropertyGroup Condition="'$(Configuration)|$(Platfo
