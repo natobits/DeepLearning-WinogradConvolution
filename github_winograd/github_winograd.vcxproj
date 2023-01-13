@@ -54,4 +54,5 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application<
+    <ConfigurationType>Application</ConfigurationType>
+    <Use
