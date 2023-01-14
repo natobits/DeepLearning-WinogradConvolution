@@ -57,4 +57,4 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <WholePro
+    <WholeProgramOptimization>true</WholeProgramOptimizatio
