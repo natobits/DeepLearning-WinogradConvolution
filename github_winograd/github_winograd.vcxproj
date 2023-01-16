@@ -58,4 +58,6 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte<
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <
