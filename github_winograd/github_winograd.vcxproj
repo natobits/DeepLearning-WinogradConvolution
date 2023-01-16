@@ -60,4 +60,4 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <
+  <Import Project="$(VCTargetsPath)\Microsof
