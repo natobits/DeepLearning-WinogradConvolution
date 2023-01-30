@@ -65,4 +65,4 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Label="Proper
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$
