@@ -66,4 +66,4 @@
   <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Pla
