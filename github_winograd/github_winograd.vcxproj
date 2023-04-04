@@ -88,4 +88,4 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)\packages\OpenBLAS.0.2.14.1\lib\native\include;$(VC_IncludePath);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(SolutionDir)\packages\OpenBLAS.0.2.14.1\lib\native\lib\x64;$
+    <LibraryPath>$(SolutionDir)\packages\OpenBLAS.0.2.14.1\lib\native\lib\x64;$(VC_LibraryPath_x64);$(VC_LibraryPath_x64);$(Wi
