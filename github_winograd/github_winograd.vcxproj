@@ -94,4 +94,4 @@
     <LibraryPath>$(SolutionDir)\packages\OpenBLAS.0.2.14.1\lib\native\lib\x64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
     <IncludePath>$(SolutionDir)\packages\OpenBLAS.0.2.14.1\lib\native\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
-  <ItemDefinitionGroup C
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='
