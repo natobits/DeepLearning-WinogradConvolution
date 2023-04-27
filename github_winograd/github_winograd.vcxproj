@@ -106,4 +106,5 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <Warn
+      <WarningLevel>Level3</WarningLevel>
+      <Optim
