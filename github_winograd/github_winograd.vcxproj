@@ -110,4 +110,5 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
-    <L
+    <Link>
+      <AdditionalDependencies>li
