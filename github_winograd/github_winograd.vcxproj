@@ -108,4 +108,6 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <S
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <L
