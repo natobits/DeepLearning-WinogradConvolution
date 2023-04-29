@@ -111,4 +111,4 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libopenblas.dll.a;kernel32.lib;user32.lib;gdi32.lib;w
+      <AdditionalDependencies>libopenblas.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell
