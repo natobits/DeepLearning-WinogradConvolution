@@ -115,4 +115,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompil
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      
