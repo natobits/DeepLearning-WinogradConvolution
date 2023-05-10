@@ -118,4 +118,4 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-   
+      <FunctionLevelLinking>true</FunctionLevelLin
