@@ -138,4 +138,4 @@
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <Opt
+      <OptimizeReferences>true</OptimizeReferences
