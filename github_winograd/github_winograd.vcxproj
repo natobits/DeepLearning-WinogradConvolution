@@ -139,4 +139,4 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>libop
+      <AdditionalDependencies>libopenblas.dll.a;kernel32.lib;user32.l
