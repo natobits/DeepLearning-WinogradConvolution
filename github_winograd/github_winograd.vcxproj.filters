@@ -18,3 +18,20 @@
   <ItemGroup>
     <ClInclude Include="include\mathlib.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\winograd_kernel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\winograd_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\winograd_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
