@@ -2,4 +2,7 @@
 #define MATHLAB_H
 
 #define USE_MKL 0
-#defi
+#define USE_OPENBLAS 1
+
+#if USE_MKL
+#in
