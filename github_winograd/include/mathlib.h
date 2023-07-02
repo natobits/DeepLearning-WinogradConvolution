@@ -8,4 +8,8 @@
 #include <mkl.h>
 
 #elif USE_OPENBLAS
-#includ
+#include <cblas.h>
+
+#endif
+
+#endif
