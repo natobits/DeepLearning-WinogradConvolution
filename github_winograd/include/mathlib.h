@@ -5,4 +5,7 @@
 #define USE_OPENBLAS 1
 
 #if USE_MKL
-#in
+#include <mkl.h>
+
+#elif USE_OPENBLAS
+#includ
