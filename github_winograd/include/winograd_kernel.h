@@ -89,3 +89,38 @@ namespace WINOGRAD_KERNEL {
 
 	public:
 		static const float *get(WINOGRAD_MATRIX mat, int &row, int& col) {
+
+#if DEBUG_WINOGRAD
+			assert(mat >= WINOGRAD_A && mat <= WINOGRAD_G);
+#endif
+			switch (mat) {
+
+			case WINOGRAD_A: row = T; col = O; return getA();
+			case WINOGRAD_B: row = T; col = T; return getB();
+			case WINOGRAD_G: row = T; col = K; return getG();
+
+			}
+
+		}
+
+	};
+
+	template<>
+	struct WinogradTransformMatrix<WT_8X8_F_6X6_3X3>
+	{
+
+	private:
+
+		// wt8x8, F(6x6,3x3)
+
+		static const int O = 6;
+		static const int K = 3;
+		static const int T = O + K - 1;
+
+	public:
+		static const float *get(WINOGRAD_MATRIX mat, int &row, int& col) {
+
+#if DEBUG_WINOGRAD
+			assert(mat >= WINOGRAD_A && mat <= WINOGRAD_G);
+#endif
+			switch (mat) {
