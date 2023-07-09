@@ -47,3 +47,45 @@ namespace WINOGRAD_KERNEL {
 	{
 		// wt6x6, F(4x4,3x3)
 	private:
+		static const int O = 4;
+		static const int K = 3;
+		static const int T = O + K - 1;
+
+		static const float *getG() {
+			static const float G[T*K] = {
+				1. / 4.,       0,      0,
+				-1. / 6., -1. / 6., -1. / 6.,
+				-1. / 6.,  1. / 6., -1. / 6.,
+				1. / 24.,  1. / 12.,  1. / 6.,
+				1. / 24., -1. / 12.,  1. / 6.,
+				0,       0,      1,
+			};
+			return G;
+		}
+
+		static const float *getA() {
+			static const float A[T*O] = {
+				1,  0, 0,  0,
+				1,  1, 1,  1,
+				1, -1, 1, -1,
+				1,  2, 4,  8,
+				1, -2, 4, -8,
+				0,  0, 0,  1,
+			};
+			return A;
+		}
+
+		static const float *getB() {
+			static const float B[T*T] = {
+				4,  0,  0,  0,  0,  0,
+				0, -4,  4, -2,  2,  4,
+				-5, -4, -4, -1, -1,  0,
+				0,  1, -1,  2, -2, -5,
+				1,  1,  1,  1,  1,  0,
+				0,  0,  0,  0,  0,  1,
+			};
+			return B;
+		};
+
+	public:
+		static const float *get(WINOGRAD_MATRIX mat, int &row, int& col) {
