@@ -124,3 +124,51 @@ namespace WINOGRAD_KERNEL {
 			assert(mat >= WINOGRAD_A && mat <= WINOGRAD_G);
 #endif
 			switch (mat) {
+
+			case WINOGRAD_A: row = T; col = O; return getA();
+			case WINOGRAD_B: row = T; col = T; return getB();
+			case WINOGRAD_G: row = T; col = K; return getG();
+
+			}
+
+		}
+
+	private:
+		static const float *getG() {
+			static const float G[T*K] = {
+				1.f,   0.f   ,  0.f  ,
+				-2.f / 9 , -2.f / 9  , -2.f / 9,
+				-2.f / 9 ,  2.f / 9  , -2.f / 9,
+				1.f / 90 , 1.f / 45  , 2.f / 45,
+				1.f / 90 , -1.f / 45 , 2.f / 45,
+				32.f / 45,  16.f / 45, 8.f / 45,
+				32.f / 45, -16.f / 45, 8.f / 45,
+				0.f   ,   0.f   ,  1.f  ,
+			};
+			return G;
+		}
+
+		static const float *getA() {
+			static const float A[T*(T - K + 1)] = {
+				1 * 1.f,           0 * 1.f,           0 * 1.f,           0 * 1.f,           0 * 1.f,           0 * 1.f,
+				1 * 1.f,           1 * 1.f,           1 * 1.f,           1 * 1.f,           1 * 1.f,           1 * 1.f,
+				1 * 1.f,          -1 * 1.f,           1 * 1.f,          -1 * 1.f,           1 * 1.f,          -1 * 1.f,
+				1 * 1.f,           2 * 1.f,           4 * 1.f,           8 * 1.f,          16 * 1.f,          32 * 1.f,
+				1 * 1.f,          -2 * 1.f,           4 * 1.f,          -8 * 1.f,          16 * 1.f,         -32 * 1.f,
+				1 * 1.f,		   0.5*1.f,			 0.25*1.f,		   0.125*1.f,		 0.0625*1.f,	   0.03125*1.f,
+				1 * 1.f,		   -0.5*1.f,         0.25*1.f,			-0.125*1.f,      0.0625*1.f,	  -0.03125*1.f,
+				0 * 1.f,           0 * 1.f,           0 * 1.f,           0 * 1.f,           0 * 1.f,           1 * 1.f,
+			};
+			return A;
+		}
+
+		static const float *getB() {
+			static const float B[T*T] = {
+				1 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,
+				0 * 1.f,         1 * 1.f,        -1 * 1.f,       0.5*1.f,      -0.5*1.f,         2 * 1.f,        -2 * 1.f,        -1 * 1.f,
+				-5.25*1.f,         1 * 1.f,         1 * 1.f,      0.25*1.f,      0.25*1.f,         4 * 1.f,         4 * 1.f,         0 * 1.f,
+				0 * 1.f,     -4.25*1.f,      4.25*1.f,      -2.5*1.f,       2.5*1.f,      -2.5*1.f,       2.5*1.f,      5.25*1.f,
+				5.25*1.f,     -4.25*1.f,     -4.25*1.f,     -1.25*1.f,     -1.25*1.f,        -5 * 1.f,        -5 * 1.f,         0 * 1.f,
+				0 * 1.f,         1 * 1.f,        -1 * 1.f,         2 * 1.f,        -2 * 1.f,       0.5*1.f,      -0.5*1.f,     -5.25*1.f,
+				-1 * 1.f,         1 * 1.f,         1 * 1.f,         1 * 1.f,         1 * 1.f,         1 * 1.f,         1 * 1.f,         0 * 1.f,
+				0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         1 * 1.f,
