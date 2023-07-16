@@ -172,3 +172,37 @@ namespace WINOGRAD_KERNEL {
 				0 * 1.f,         1 * 1.f,        -1 * 1.f,         2 * 1.f,        -2 * 1.f,       0.5*1.f,      -0.5*1.f,     -5.25*1.f,
 				-1 * 1.f,         1 * 1.f,         1 * 1.f,         1 * 1.f,         1 * 1.f,         1 * 1.f,         1 * 1.f,         0 * 1.f,
 				0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         0 * 1.f,         1 * 1.f,
+			};
+			return B;
+		};
+	};
+
+	template<>
+	struct WinogradTransformMatrix<WT_8X8_F_4X4_5X5>
+	{
+
+	private:
+		// wt8x8, F(4x4,5x5)
+		static const int T = 5 + 4 - 1;
+		static const int K = 5;
+		static const int O = 4;
+
+	public:
+		static const float *get(WINOGRAD_MATRIX mat, int &row, int& col) {
+
+#if DEBUG_WINOGRAD
+			assert(mat >= WINOGRAD_A && mat <= WINOGRAD_G);
+#endif
+			switch (mat) {
+
+			case WINOGRAD_A: row = T; col = O; return getA();
+			case WINOGRAD_B: row = T; col = T; return getB();
+			case WINOGRAD_G: row = T; col = K; return getG();
+
+			}
+
+		}
+
+	private:
+
+		// from https://github.com/Maratyszcza/NNPACK/issues/12
