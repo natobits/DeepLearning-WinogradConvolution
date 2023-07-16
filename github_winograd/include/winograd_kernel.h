@@ -246,3 +246,51 @@ namespace WINOGRAD_KERNEL {
 				0, -17. / 4,  17. / 4, -5. / 2,  5. / 2, -5. / 2,  5. / 2,  21. / 4,
 				21. / 4, -17. / 4, -17. / 4, -5. / 4, -5. / 4,    -5,    -5,      0,
 				0,      1,     -1,     2,    -2,  1. / 2, -1. / 2, -21. / 4,
+				-1,      1,      1,     1,     1,     1,     1,      0,
+				0,      0,      0,     0,     0,     0,     0,      1,
+			};
+			return B;
+		}
+	};
+
+	class Winograd_Kron
+	{
+
+	private:
+
+		Winograd_Kron(WINOGRAD_ALG alg, WINOGRAD_MATRIX mat) {
+
+			isCalc = false;
+
+			switch (alg) {
+
+			case WT_8X8_F_6X6_3X3:
+				matrix = WinogradTransformMatrix<WT_8X8_F_6X6_3X3>::get(mat, row, col); break;
+			case WT_6X6_F_4X4_3X3:
+				matrix = WinogradTransformMatrix<WT_6X6_F_4X4_3X3>::get(mat, row, col); break;
+			case WT_8X8_F_4X4_5X5:
+				matrix = WinogradTransformMatrix<WT_8X8_F_4X4_5X5>::get(mat, row, col); break;
+
+			}
+
+		}
+
+	private:
+		const float *matrix; // = A, B, G
+		int row, col;// matrix: row*col
+						// A: T*O
+						// B: M*M
+						// G: T*K
+
+		std::shared_ptr<float> kron;
+
+		bool isCalc;
+
+		//std::shared_ptr<float> normOfRowsInv;
+
+	public:
+
+		static Winograd_Kron *getInstance(WINOGRAD_ALG alg, WINOGRAD_MATRIX mat) {
+
+			// 9 instances 3*3
+			static Winograd_Kron * instances[MATRIX_KINDS *WINOGRAD_PAIR_KINDS] = { NULL }; // according to [WINOGRAD_MATRIX] [WINOGRAD_PAIR]
