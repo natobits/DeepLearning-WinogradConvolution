@@ -346,3 +346,14 @@ namespace WINOGRAD_KERNEL {
 		//singleton, precomputation before inference  
 
 		Winograd_Kron::getInstance(WT_6X6_F_4X4_3X3, WINOGRAD_A)->get();
+		Winograd_Kron::getInstance(WT_6X6_F_4X4_3X3, WINOGRAD_B)->get();
+		Winograd_Kron::getInstance(WT_6X6_F_4X4_3X3, WINOGRAD_G)->get();
+
+		Winograd_Kron::getInstance(WT_8X8_F_6X6_3X3, WINOGRAD_A)->get();
+		Winograd_Kron::getInstance(WT_8X8_F_6X6_3X3, WINOGRAD_B)->get();
+		Winograd_Kron::getInstance(WT_8X8_F_6X6_3X3, WINOGRAD_G)->get();
+	}
+}
+
+
+#endif
