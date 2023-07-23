@@ -294,3 +294,55 @@ namespace WINOGRAD_KERNEL {
 
 			// 9 instances 3*3
 			static Winograd_Kron * instances[MATRIX_KINDS *WINOGRAD_PAIR_KINDS] = { NULL }; // according to [WINOGRAD_MATRIX] [WINOGRAD_PAIR]
+
+			int index = alg*WINOGRAD_PAIR_KINDS + mat;
+
+			if (instances[index] == NULL)
+				instances[index] = new Winograd_Kron(alg, mat);
+
+			return instances[index];
+
+		}
+
+		const std::shared_ptr<float> get() {
+			if (isCalc)
+				return kron;
+			else {
+				calc();
+				return kron;
+			}
+
+		}
+
+	private:
+
+		void calc() {
+
+			kron = std::shared_ptr<float>(new float[row*col*row*col]);
+
+			kronecker_product(kron.get(), matrix, matrix, row, col, row, col);
+
+			isCalc = true;
+
+		}
+
+	};
+
+	void kronecker_product(float *out, const float *in1, const float *in2, int m, int n, int p, int q)
+	{
+		for (int i = 0; i < m; ++i) {
+			for (int j = 0; j < n; ++j) {
+				for (int k = 0; k < p; ++k) {
+					for (int l = 0; l < q; ++l) {
+						out[(p*i + k)*n*q + q*j + l] = in1[n*i + j] * in2[k*q + l];
+						/* compute in float precision and then convert it back to float for accuracy */
+					}
+				}
+			}
+		}
+	}
+
+	void winograd2D_initialize() {
+		//singleton, precomputation before inference  
+
+		Winograd_Kron::getInstance(WT_6X6_F_4X4_3X3, WINOGRAD_A)->get();
