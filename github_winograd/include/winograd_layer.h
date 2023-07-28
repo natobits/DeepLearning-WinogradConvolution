@@ -75,3 +75,40 @@ namespace WINOGRAD_KERNEL
 			conv_out_channels_ = oC;
 			m_pad = pad; // pad_h = pad_w
 			m_bias = bias;
+
+			m_batchSize = batch_size;
+			m_group_ = 1;
+
+			m_bottom_dim_ = 0;// default batch =1
+			m_top_dim_ = 0;
+
+			m_winogradWeight = NULL;
+			m_winogradInput = NULL;
+
+
+			// Output width.
+			m_oW = (m_iW + m_pad * 2 - m_kW) / m_sW + 1;
+			m_oH = (m_iH + m_pad * 2 - m_kH) / m_sH + 1;
+
+			if (alg == WT_8X8_F_6X6_3X3) {
+
+				tile_h_in_ = 8;
+				tile_w_in_ = 8; /* input tile size */
+
+				tile_h_out_ = tile_h_in_ - m_kH + 1;
+				tile_w_out_ = tile_w_in_ - m_kW + 1; /* output tile size */
+
+				ntiles_h_ = (PUBLIC_TOOL::max(m_iH + m_pad - tile_h_in_ + 1, m_oH) + tile_h_out_ - 1) / tile_h_out_;
+				ntiles_w_ = (PUBLIC_TOOL::max(m_iW + m_pad - tile_w_in_ + 1, m_oW) + tile_w_out_ - 1) / tile_w_out_;
+
+			}
+			else if (alg == WT_6X6_F_4X4_3X3) {
+
+				tile_h_in_ = 6;
+				tile_w_in_ = 6; /* input tile size */
+
+				tile_h_out_ = tile_h_in_ - m_kH + 1;
+				tile_w_out_ = tile_w_in_ - m_kW + 1; /* output tile size */
+
+				ntiles_h_ = (PUBLIC_TOOL::max(m_iH + m_pad - tile_h_in_ + 1, m_oH) + tile_h_out_ - 1) / tile_h_out_;
+				ntiles_w_ = (PUBLIC_TOOL::max(m_iW + m_pad - tile_w_in_ + 1, m_oW) + tile_w_out_ - 1) / tile_w_out_;
