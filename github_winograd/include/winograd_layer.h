@@ -112,3 +112,53 @@ namespace WINOGRAD_KERNEL
 
 				ntiles_h_ = (PUBLIC_TOOL::max(m_iH + m_pad - tile_h_in_ + 1, m_oH) + tile_h_out_ - 1) / tile_h_out_;
 				ntiles_w_ = (PUBLIC_TOOL::max(m_iW + m_pad - tile_w_in_ + 1, m_oW) + tile_w_out_ - 1) / tile_w_out_;
+
+			}
+			else throw("convolution algorithm error!");
+
+		}
+
+		template <typename Dtype>
+		const std::shared_ptr<Dtype> get_inference_cpu(Dtype* data, const Dtype* par, Dtype* col_buff) {
+
+			m_inputOrg = data;
+			m_weightOrg = par;
+			m_col_buff = col_buff;
+
+
+			std::shared_ptr<Dtype> resOut = std::shared_ptr<Dtype>(new Dtype[m_oH*m_oW*conv_out_channels_]);
+
+			//trans weight to winograd domain
+			trans_weight2wiongrad();
+
+
+			for (int n = 0; n < m_batchSize; n++) {
+
+				//trans input to winograd domain
+				trans_input2winograd(m_inputOrg + n*m_bottom_dim_, m_col_buff);
+
+
+				// Convolution in Winograd domain
+				winograd_conv();
+
+
+				// Transform back to time domain	
+				trans2spatial(resOut.get() + n*this->m_top_dim_);
+
+				//bias
+				if (this->m_bias) {
+
+					int base = conv_in_channels_ * conv_out_channels_ * m_kW * m_kH;
+
+					const Dtype* bias = &par[base];
+
+					this->forward_cpu_bias(resOut.get() + n * this->m_top_dim_, bias);
+				}
+			}
+
+			return  resOut;
+		}
+
+
+	public:
+		~WinogradLayer() {
