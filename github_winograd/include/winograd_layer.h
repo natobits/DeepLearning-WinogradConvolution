@@ -162,3 +162,33 @@ namespace WINOGRAD_KERNEL
 
 	public:
 		~WinogradLayer() {
+			/*if (!m_winogradInput) delete[] m_winogradInput;
+			if (!m_winogradWeight) delete[] m_winogradWeight;*/
+		}
+
+
+	private:
+
+		void trans_weight2wiongrad() {// weight: hwcn --> cn hw
+
+			// transform weights to Winograd domain
+			if (!m_winogradWeight) m_winogradWeight = new Dtype[conv_in_channels_*conv_out_channels_*tile_h_in_*tile_w_in_];
+
+			PUBLIC_TOOL::dlm_cpu_gemm(CblasNoTrans, CblasTrans,
+				tile_h_in_*tile_w_in_, (conv_in_channels_ / m_group_)*conv_out_channels_, m_kH*m_kW,
+				(Dtype)1,
+				Winograd_Kron::getInstance(m_alg, WINOGRAD_G)->get().get(),
+				m_weightOrg,
+				(Dtype)0,
+				m_winogradWeight);			
+
+		}
+
+		template <typename Dtype>
+		void trans_input2winograd(const Dtype *data, Dtype *col_buff) {
+			// Transform input to Winograd domain
+
+			winograd_input_im2col_cpu(data, col_buff);
+
+
+			int M = this->conv_in_channels_*ntiles_h_*ntiles_w_;
