@@ -242,3 +242,34 @@ namespace WINOGRAD_KERNEL
 			int height = m_iH;
 			int width = m_iW;
 			int pad_h = m_pad, pad_w = m_pad;
+
+			for (int c = 0; c < this->conv_in_channels_; ++c) {
+				for (int tile_h = 0; tile_h < ntiles_h_; ++tile_h) {
+					for (int tile_w = 0; tile_w < ntiles_w_; ++tile_w) {
+						
+						
+						
+						for (int y = 0; y < tile_h_in_; ++y) {
+							for (int x = 0; x < tile_w_in_; ++x) {
+								int in_y = tile_h*tile_h_out_ + y - pad_h;
+								int in_x = tile_w*tile_w_out_ + x - pad_w;
+
+								if (in_y < 0 || in_x < 0 || in_y >= height || in_x >= width) {
+									col_buff[(((c*ntiles_h_ + tile_h)*ntiles_w_ + tile_w)*tile_h_in_ + y)*tile_w_in_ + x] = 0;
+								}
+								else {
+									col_buff[(((c*ntiles_h_ + tile_h)*ntiles_w_ + tile_w)*tile_h_in_ + y)*tile_w_in_ + x] =
+										data[(c*height + in_y)*width + in_x];
+								}
+							}
+						}
+
+
+					} // for each tile
+				} // for each tile
+			} // for each input channel
+		}
+
+
+		template <typename Dtype>
+		void forward_cpu_bias(Dtype* output,
