@@ -192,3 +192,53 @@ namespace WINOGRAD_KERNEL
 
 
 			int M = this->conv_in_channels_*ntiles_h_*ntiles_w_;
+
+			if (!m_winogradInput) m_winogradInput = new Dtype[tile_h_in_*tile_w_in_*M];
+
+			PUBLIC_TOOL::dlm_cpu_gemm(CblasTrans, CblasTrans,
+				tile_h_in_*tile_w_in_, M, tile_h_in_*tile_w_in_,
+				(Dtype)1,
+				Winograd_Kron::getInstance(m_alg, WINOGRAD_B)->get().get(),
+				col_buff,
+				(Dtype)0, this->m_winogradInput);
+
+		}
+
+		void winograd_conv() {
+
+			// Convolution in Winograd domain
+			for (int j = 0; j < tile_h_in_*tile_w_in_; ++j) {
+				for (int g = 0; g < this->m_group_; ++g) {
+					PUBLIC_TOOL::dlm_cpu_gemm(CblasNoTrans, CblasNoTrans,
+						this->conv_out_channels_ / this->m_group_, ntiles_h_*ntiles_w_, this->conv_in_channels_ / this->m_group_,
+						(Dtype)1,
+						m_winogradWeight + (j*this->m_group_ + g)*(this->conv_out_channels_ / this->m_group_)*(this->conv_in_channels_ / this->m_group_),
+						m_winogradInput + (j*this->m_group_ + g)*(this->conv_in_channels_ / this->m_group_)*ntiles_h_*ntiles_w_,
+						(Dtype)0, m_col_buff + (j*this->m_group_ + g)*(this->conv_out_channels_ / this->m_group_)*ntiles_h_*ntiles_w_);
+				}
+			}
+			// col_buff has (tile_h_in*tile_w_in) x (conv_out_channels) x (ntiles_h*ntiles_w)
+	 }
+
+		template <typename Dtype>
+		void trans2spatial(Dtype *data) {
+
+			Dtype *winogradRes = new Dtype[this->conv_out_channels_*ntiles_h_*ntiles_w_*tile_h_out_*tile_w_out_];
+
+			PUBLIC_TOOL::dlm_cpu_gemm(CblasTrans, CblasNoTrans,
+				this->conv_out_channels_*ntiles_h_*ntiles_w_, tile_h_out_*tile_w_out_, tile_h_in_*tile_w_in_,
+				(Dtype)1, m_col_buff,
+				Winograd_Kron::getInstance(m_alg, WINOGRAD_A)->get().get(),
+				(Dtype)0, winogradRes);
+
+			winograd_output_col2im_cpu(winogradRes, data);
+
+			delete[] winogradRes;
+		}
+
+		template<typename Dtype>
+		void winograd_input_im2col_cpu(const Dtype *data, Dtype *col_buff)
+		{
+			int height = m_iH;
+			int width = m_iW;
+			int pad_h = m_pad, pad_w = m_pad;
