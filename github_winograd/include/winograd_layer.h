@@ -273,3 +273,48 @@ namespace WINOGRAD_KERNEL
 
 		template <typename Dtype>
 		void forward_cpu_bias(Dtype* output,
+			const Dtype* bias) {
+
+			int out_spatial_dim_ = m_oH * m_oW;
+
+			for (int i = 0; i < conv_out_channels_; i++) {
+
+				for (int j = 0; j < out_spatial_dim_; j++)
+					output[i*out_spatial_dim_ + j] += bias[i];
+
+			}
+
+			//dlm_cpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, conv_out_channels_,
+			//	out_spatial_dim_, 1, (Dtype)1., bias, bias_multiplier_.cpu_data(),
+			//	(Dtype)1., output);
+		}
+
+
+		template<typename Dtype>
+		void winograd_output_col2im_cpu(const Dtype *col_buff, Dtype *data)
+		{
+			const int output_h = m_iH, output_w = m_iW;
+
+			for (int n = 0; n < this->conv_out_channels_; ++n) {
+				for (int tile_h = 0; tile_h < ntiles_h_; ++tile_h) {
+					for (int tile_w = 0; tile_w < ntiles_w_; ++tile_w) {
+						for (int y = 0; y < tile_h_out_; ++y) {
+							for (int x = 0; x < tile_w_out_; ++x) {
+								int out_y = tile_h*tile_h_out_ + y;
+								int out_x = tile_w*tile_w_out_ + x;
+
+								if (out_y < output_h && out_x < output_w) {
+
+									/*int  kk = 0;
+									if ((((n*ntiles_h_ + tile_h)*ntiles_w_ + tile_w)*tile_h_out_ + y)*tile_w_out_ + x == 184604)
+										kk++;
+
+									cout << "dat: "<<(n*output_h + out_y)*output_w + out_x << " col : " << (((n*ntiles_h_ + tile_h)*ntiles_w_ + tile_w)*tile_h_out_ + y)*tile_w_out_ + x << endl;*/
+
+									data[(n*output_h + out_y)*output_w + out_x] =
+										col_buff[(((n*ntiles_h_ + tile_h)*ntiles_w_ + tile_w)*tile_h_out_ + y)*tile_w_out_ + x];
+								}
+							}
+						}
+					} // for each tile
+				} // for each tile
