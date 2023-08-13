@@ -318,3 +318,10 @@ namespace WINOGRAD_KERNEL
 						}
 					} // for each tile
 				} // for each tile
+			} // for each input channel
+		}
+
+	};
+}
+
+#endif
