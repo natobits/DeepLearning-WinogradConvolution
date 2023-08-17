@@ -56,3 +56,47 @@ void testWinograd() {
 
 	// Output width.
 	const auto toW = (tiW + tpad * 2 - tkW) / tsW + 1;
+
+	cout << setprecision(PRECISE);
+
+	//NCHW
+	float* input = new float[tiC*tiH*tiW];
+	float* kernel = new float[tiC*tkH*tkW*toC + toC];
+
+	//initInput
+	for (int c = 0; c<tiC*tiH*tiW; ) {
+
+#if INPUT_INTEGER
+		input[c++] = rand() % 10;
+#else
+		input[c++] = rand()  * 0.1234f / RAND_MAX;//rand() % 10;//
+#endif
+
+	}
+
+	//initKernel
+	for(int c=0;c< tiC*tkH*tkW*toC + toC;)
+	{
+
+#if KERNEL_INTEGER
+			kernel[c++] = rand() % 10;//
+#else 
+			kernel[c++] = rand()*0.1234 / RAND_MAX; //
+#endif		
+		
+	}
+
+
+	WINOGRAD_KERNEL::WinogradLayer<float> wt8X8(
+		WINOGRAD_KERNEL::WT_8X8_F_6X6_3X3, //WT_6X6_F_4X4_3X3
+		1,
+		tiH,
+		tiW,
+		tiC,
+		tkH,
+		tkW,
+		tsH,
+		tsW,
+		toC,
+		tpad,
+		tbias
