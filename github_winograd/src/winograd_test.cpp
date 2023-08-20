@@ -100,3 +100,35 @@ void testWinograd() {
 		toC,
 		tpad,
 		tbias
+	);
+
+	WINOGRAD_KERNEL::WinogradLayer<float> wt6x6(
+		WINOGRAD_KERNEL::WT_6X6_F_4X4_3X3, //WT_6X6_F_4X4_3X3
+		1,
+		tiH,
+		tiW,
+		tiC,
+		tkH,
+		tkW,
+		tsH,
+		tsW,
+		toC,
+		tpad,
+		tbias
+	);
+
+	float* buffer=new float [toH*toW*tiC*100];// enough buffer, used as medium buffer flowing through each layer
+
+	shared_ptr<float> output = wt8X8.get_inference_cpu(input, kernel, (float*)buffer); //
+
+	cout << "the first three elements and the last one of the wt8x8 result:" << endl;
+	cout << output.get()[0] << " " << output.get()[1] << " " << output.get()[2] << " " << output.get()[toC*toH*toW - 1] << " " << endl;
+
+
+	output = wt6x6.get_inference_cpu(input, kernel, (float*)buffer); //
+
+	cout << "the first three elements and the last one of the wt6x6 result:" << endl;
+	cout << output.get()[0] << " " << output.get()[1] << " " << output.get()[2] << " " << output.get()[toC*toH*toW - 1] << " " << endl;
+
+	delete[] buffer;
+}
