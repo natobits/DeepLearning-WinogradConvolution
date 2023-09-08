@@ -6,4 +6,5 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "github_winograd", "github_winograd\github_winograd.vcxproj", "{91EDB49D-AAD0-47A7-A8C3-A87BBDF7099C}"
 EndProject
 Global
-	GlobalSec
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		De
