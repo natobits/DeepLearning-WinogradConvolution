@@ -12,4 +12,5 @@ Global
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(ProjectConfigurat
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91EDB49D-AAD
