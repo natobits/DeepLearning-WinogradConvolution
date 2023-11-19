@@ -20,4 +20,6 @@ Global
 		{91EDB49D-AAD0-47A7-A8C3-A87BBDF7099C}.Release|x64.ActiveCfg = Release|x64
 		{91EDB49D-AAD0-47A7-A8C3-A87BBDF7099C}.Release|x64.Build.0 = Release|x64
 		{91EDB49D-AAD0-47A7-A8C3-A87BBDF7099C}.Release|x86.ActiveCfg = Release|Win32
-		{91EDB49D-AAD0-47A7-A8C3-A87BBDF7099C}.Release|x86.Build.0 = Release
+		{91EDB49D-AAD0-47A7-A8C3-A87BBDF7099C}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection
