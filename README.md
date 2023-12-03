@@ -1,2 +1,2 @@
 # DeepLearning-WinogradConvolution
-DeepLearning-WinogradConvolution is a
+DeepLearning-WinogradConvolution is a Winograd based kernel for convo
