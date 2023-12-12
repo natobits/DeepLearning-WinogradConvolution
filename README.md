@@ -1,2 +1,2 @@
 # DeepLearning-WinogradConvolution
-DeepLearning-WinogradConvolution is a Winograd based kernel for convolutions in deep learning frameworks. It's an implementation of Winograd convolutions that suppo
+DeepLearning-WinogradConvolution is a Winograd based kernel for convolutions in deep learning frameworks. It's an implementation of Winograd convolutions that supports three WT methods, namely, WT_6X6_
