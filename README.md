@@ -4,4 +4,5 @@ DeepLearning-WinogradConvolution is a Winograd based kernel for convolutions in 
 ## Dependencies
 For performance reasons, a fast blas such as mkl-gemm or openblas is preferred.
 
-#
+## Building
+The project only requires header file
