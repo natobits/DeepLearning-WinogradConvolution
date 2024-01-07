@@ -2,4 +2,6 @@
 DeepLearning-WinogradConvolution is a Winograd based kernel for convolutions in deep learning frameworks. It's an implementation of Winograd convolutions that supports three WT methods, namely, WT_6X6_F_4X4_3X3, WT_8X8_F_4X4_5X5, and WT_8X8_F_6X6_3X3, where a 3x3 convolution kernel is recommended. This project borrows some components from SkimCaffe, but the Winograd kernel implemented here is more portable.
 
 ## Dependencies
-For performance reasons, a fast blas such 
+For performance reasons, a fast blas such as mkl-gemm or openblas is preferred.
+
+#
