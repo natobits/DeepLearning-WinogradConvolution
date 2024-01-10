@@ -8,4 +8,6 @@ For performance reasons, a fast blas such as mkl-gemm or openblas is preferred.
 The project only requires header files written in C++ and supports both Windows and Linux. This version was built on VS 2015.
 
 ## Testing
-You can refer to winogra
+You can refer to winograd_test.cpp for testing.
+
+## Packaging
