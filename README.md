@@ -14,4 +14,4 @@ You can refer to winograd_test.cpp for testing.
 The header file 'include/winograd_layer.h' can be integrated natively into some popular deep learning frameworks as a Winograd layer, like caffe (https://github.com/BVLC/caffe) and tiny-dnn (https://github.com/tiny-dnn/tiny-dnn).
 
 ## References & Dependencies
-[1] Andrew La
+[1] Andrew Lavin, Scott Gray. Fast Algorithms for Convolut
