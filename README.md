@@ -16,4 +16,6 @@ The header file 'include/winograd_layer.h' can be integrated natively into some 
 ## References & Dependencies
 [1] Andrew Lavin, Scott Gray. Fast Algorithms for Convolutional Neural Networks. https://arxiv.org/abs/1509.09308
 
-[2] SkimCaffe, https://
+[2] SkimCaffe, https://github.com/IntelLabs/SkimCaffe
+
+[3] OpenBLAS, ht
