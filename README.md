@@ -20,4 +20,5 @@ The header file 'include/winograd_layer.h' can be integrated natively into some 
 
 [3] OpenBLAS, https://github.com/xianyi/OpenBLAS.
 
-## Li
+## License
+The project is under the BSD 3-Clause License.
