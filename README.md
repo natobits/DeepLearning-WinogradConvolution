@@ -18,4 +18,6 @@ The header file 'include/winograd_layer.h' can be integrated natively into some 
 
 [2] SkimCaffe, https://github.com/IntelLabs/SkimCaffe
 
-[3] OpenBLAS, ht
+[3] OpenBLAS, https://github.com/xianyi/OpenBLAS.
+
+## Li
